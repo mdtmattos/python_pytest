@@ -5,7 +5,7 @@ Automation project using Pytest
 Script: .\venv\Scripts\activate
 
 ## Install 
-- 1 - Python
+- 1 - Python: https://www.python.org/
 - 2 - Install Selenium: pip install selenium
 - 3 - Install Pytest: pip install -U pytest
 
