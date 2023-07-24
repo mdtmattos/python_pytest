@@ -1,9 +1,8 @@
 import conftest
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
 
 
-class LoginPage(BasePage): 
+class LoginPage(): 
 
     def __init__(self):
         self.driver = conftest.driver
@@ -16,13 +15,13 @@ class LoginPage(BasePage):
 
     #PageObject
     def typeUserName(self, user):
-        self.type(self.userName_input, user)
+        self.driver.find_element(*self.userName_input).send_keys(user)
 
     def typePassword(self, password):
-        self.type(self.password_input, password)
+        self.driver.find_element(*self.password_input).send_keys(password)
 
     def clickLogin(self):
-        self.click(self.loginBtn)
+        self.driver.find_element(*self.loginBtn).click()
 
     def assertLoginErrorMessage(self, text):
-        assert self.assertText(self.loginErrorMessage), text == text
+        assert self.driver.find_element(*self.loginErrorMessage), text == text
