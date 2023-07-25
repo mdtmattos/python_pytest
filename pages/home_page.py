@@ -6,9 +6,28 @@ class HomePage():
     def __init__(self):
         self.driver = conftest.driver
 
-    #Elements
-        self.page_title = (By.XPATH, '//span[@class="title"]')
+    # Elements
+    def page_title(self): 
+        return self.driver.find_element(By.XPATH, '//span[@class="title"]')
+    
+    def product_name(self, product_name): 
+        return self.driver.find_element(By.XPATH, f'//*[@class="inventory_item_name" and text()="{product_name}"]')
+    
+    def btn_add_to_cart(self): 
+        return self.driver.find_element(By.ID, 'add-to-cart-sauce-labs-backpack')
+    
+    def cart_button(self):
+        return self.driver.find_element(By.ID, 'shopping_cart_container')
 
-    #PageObjects
-    def assertLoginSuccessfully(self):
-        self.driver.find_element(*self.page_title).is_displayed(), "The element '{locator}' is not visible"
+    # Page Actions
+    def assert_login_successfully(self):
+        assert self.page_title().is_displayed()
+
+    def click_product(self, product_name):
+        self.product_name(product_name).click()
+
+    def click_add_to_cart(self):
+        self.btn_add_to_cart().click()
+    
+    def click_cart(self):
+        self.cart_button().click()

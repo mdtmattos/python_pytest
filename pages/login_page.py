@@ -2,26 +2,35 @@ import conftest
 from selenium.webdriver.common.by import By
 
 
-class LoginPage(): 
+from selenium.webdriver.common.by import By
 
+class LoginPage():
     def __init__(self):
         self.driver = conftest.driver
 
-    #Elements
-        self.userName_input = (By.ID, "user-name")
-        self.password_input = (By.ID, "password")
-        self.loginBtn = (By.ID, "login-button")
-        self.loginErrorMessage = (By.XPATH, '//h3[@data-test="error"]')
+    # Elements
+    def user_name_input(self): 
+        return self.driver.find_element(By.ID, "user-name")
+    
+    def password_input(self):
+        return self.driver.find_element(By.ID, "password")
+        
+    def login_btn(self):
+        return self.driver.find_element(By.ID, "login-button")
+    
+    def login_error_messages(self):
+        return self.driver.find_elements(By.XPATH, '//h3[@data-test="error"]')
 
-    #PageObject
-    def typeUserName(self, user):
-        self.driver.find_element(*self.userName_input).send_keys(user)
+    # Page Actions
+    def type_user_name(self, user):
+        self.user_name_input().send_keys(user)
 
-    def typePassword(self, password):
-        self.driver.find_element(*self.password_input).send_keys(password)
+    def type_password(self, password):
+        self.password_input().send_keys(password)
 
-    def clickLogin(self):
-        self.driver.find_element(*self.loginBtn).click()
+    def click_login(self):
+        self.login_btn().click()
 
-    def assertLoginErrorMessage(self, text):
-        assert self.driver.find_element(*self.loginErrorMessage), text == text
+    def assert_login_error_message(self, text):
+        error_messages = [element.text for element in self.login_error_messages()]
+        assert text in error_messages
