@@ -20,5 +20,3 @@ class TestCT02:
         homePage.click_menu()
         homePage.click_logout()
         loginPage.assert_user_name_field_is_visible()
-
-
