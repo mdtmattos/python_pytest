@@ -20,6 +20,9 @@ class CartPage():
     def remove_btn(self):
         return self.driver.find_element(By.ID, 'remove-sauce-labs-backpack')
     
+    def continue_shipping_btn(self):
+        return self.driver.find_element(By.ID, 'continue-shopping')
+    
     def continue_btn(self):
         return self.driver.find_element(By.ID, 'continue')
     
@@ -62,6 +65,9 @@ class CartPage():
 
     def click_checkout_btn(self):
         self.checkout_btn().click()
+    
+    def click_continue_shipping(self):
+        self.continue_shipping_btn().click()
 
     def click_remove_btn(self):
         self.remove_btn().click()
