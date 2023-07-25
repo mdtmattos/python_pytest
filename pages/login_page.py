@@ -34,3 +34,6 @@ class LoginPage():
     def assert_login_error_message(self, text):
         error_messages = [element.text for element in self.login_error_messages()]
         assert text in error_messages
+
+    def assert_user_name_field_is_visible(self):
+        self.user_name_input().is_displayed()

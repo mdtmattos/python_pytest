@@ -16,6 +16,12 @@ class HomePage():
     def btn_add_to_cart(self): 
         return self.driver.find_element(By.XPATH, f'//button[@class="btn btn_primary btn_small btn_inventory" and text()="Add to cart"]')
     
+    def btn_menu(self):
+        return self.driver.find_element(By.ID, 'react-burger-menu-btn')
+    
+    def logout_menu_option(self):
+        return self.driver.find_element(By.ID, 'logout_sidebar_link')
+    
     def cart_button(self):
         return self.driver.find_element(By.ID, 'shopping_cart_container')
 
@@ -31,3 +37,9 @@ class HomePage():
     
     def click_cart(self):
         self.cart_button().click()
+    
+    def click_menu(self):
+        self.btn_menu().click()
+
+    def click_logout(self):
+        self.logout_menu_option().click()
