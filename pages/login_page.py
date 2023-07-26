@@ -2,8 +2,6 @@ import conftest
 from selenium.webdriver.common.by import By
 
 
-from selenium.webdriver.common.by import By
-
 class LoginPage():
     def __init__(self):
         self.driver = conftest.driver
