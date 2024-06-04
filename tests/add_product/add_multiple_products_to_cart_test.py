@@ -6,7 +6,7 @@ from pages.cart_page import CartPage
 
 @pytest.mark.usefixtures("setup_teardown")
 class TestCT01:
-    def test_add_product_to_cart(self):
+    def test_add_multiple_product_to_cart(self):
         loginPage = LoginPage()
         homePage = HomePage()
         cartPage = CartPage()
@@ -48,9 +48,9 @@ class TestCT01:
         cartPage.assert_product_name('Sauce Labs Backpack')
         cartPage.assert_product_name('Sauce Labs Bike Light')
         cartPage.assert_product_name('Sauce Labs Fleece Jacket')
-        cartPage.assert_checkout_information('Payment Information')
-        cartPage.assert_checkout_information('Shipping Information')
-        cartPage.assert_checkout_information('Price Total')
+        cartPage.assert_checkout_payment_information('Payment Information:')
+        cartPage.assert_checkout_shipping_information('Shipping Information:')
+        cartPage.assert_checkout_price_information('Price Total')
         
         # Finishing checkout
         cartPage.click_finish_btn()

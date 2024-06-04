@@ -34,9 +34,9 @@ class TestCT01:
         # Assert Details
         cartPage.assert_page_title('Checkout: Overview')
         cartPage.assert_product_name('Sauce Labs Backpack')
-        cartPage.assert_checkout_information('Payment Information')
-        cartPage.assert_checkout_information('Shipping Information')
-        cartPage.assert_checkout_information('Price Total')
+        cartPage.assert_checkout_payment_information('Payment Information:')
+        cartPage.assert_checkout_shipping_information('Shipping Information:')
+        cartPage.assert_checkout_price_information('Price Total')
         
         # Finishing checkout
         cartPage.click_finish_btn()

@@ -5,7 +5,7 @@ from pages.login_page import LoginPage
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.login
 class TestCT02:
-    def test_login_invalido(self):
+    def test_login_invalid(self):
         loginPage = LoginPage()
         
         loginPage.type_user_name("standard_user")

@@ -38,8 +38,14 @@ class CartPage():
     def input_zip_code(self): 
         return self.driver.find_element(By.ID, 'postal-code')
     
-    def summary_info_label(self, infoLabel):
-        return self.driver.find_element(By.XPATH, f'//div[@class="summary_info_label" and text()="{infoLabel}"]')
+    def payment_info_label(self):
+        return self.driver.find_element(By.CSS_SELECTOR, '[data-test="payment-info-label"]')
+    
+    def shipping_info_label(self):
+        return self.driver.find_element(By.CSS_SELECTOR, '[data-test="shipping-info-label"]')
+    
+    def total_info_label(self):
+        return self.driver.find_element(By.CSS_SELECTOR, '[data-test="total-info-label"]')
     
     def checkout_successful_message(self, message):
         return self.driver.find_element(By.XPATH, f'//h2[@class="complete-header" and text()="{message}"]')
@@ -60,8 +66,17 @@ class CartPage():
         except NoSuchElementException:
             pass
 
-    def assert_checkout_information(self, text):
-        assert self.summary_info_label(text).is_displayed()
+    def assert_checkout_payment_information(self, text):
+        assert self.payment_info_label().is_displayed()
+        assert self.payment_info_label().text == text, f"Expected text to be '{text}', but got '{self.payment_info_label().text}'"
+
+    def assert_checkout_shipping_information(self, text):
+        assert self.shipping_info_label().is_displayed()
+        assert self.shipping_info_label().text == text, f"Expected text to be '{text}', but got '{self.shipping_info_label().text}'"
+
+    def assert_checkout_price_information(self, text):
+        assert self.total_info_label().is_displayed()
+        assert self.total_info_label().text == text, f"Expected text to be '{text}', but got '{self.total_info_label().text}'"
 
     def click_checkout_btn(self):
         self.checkout_btn().click()

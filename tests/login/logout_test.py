@@ -6,7 +6,7 @@ from pages.home_page import HomePage
 @pytest.mark.usefixtures("setup_teardown")
 @pytest.mark.login
 class TestCT02:
-    def test_login_invalido(self):
+    def test_logout(self):
         loginPage = LoginPage()
         homePage = HomePage()
         

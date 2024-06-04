@@ -11,7 +11,7 @@ class HomePage():
         return self.driver.find_element(By.XPATH, '//span[@class="title"]')
     
     def product_name(self, product_name): 
-        return self.driver.find_element(By.XPATH, f'//*[@class="inventory_item_name" and text()="{product_name}"]')
+        return self.driver.find_element(By.XPATH, f'//*[@data-test="inventory-item-name" and text()="{product_name}"]')
     
     def btn_add_to_cart(self): 
         return self.driver.find_element(By.XPATH, f'//button[@class="btn btn_primary btn_small btn_inventory" and text()="Add to cart"]')

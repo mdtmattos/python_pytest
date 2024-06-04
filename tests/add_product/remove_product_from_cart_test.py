@@ -6,7 +6,7 @@ from pages.cart_page import CartPage
 
 @pytest.mark.usefixtures("setup_teardown")
 class TestCT01:
-    def test_add_product_to_cart(self):
+    def test_remove_product_from_cart(self):
         loginPage = LoginPage()
         homePage = HomePage()
         cartPage = CartPage()
